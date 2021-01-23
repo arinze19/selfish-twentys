@@ -1,64 +1,152 @@
 <template>
-  <div class="container">
-    <h2>{{ selectedProduct.name }}</h2>
-    <p>${{ selectedProduct.price }}</p>
-    <img
-      :src="selectedProduct.imageUrl"
-    />
-    <p>{{ selectedProduct.description }}</p>
-    <base-button> Add to Cart </base-button>
+  <div>
+    <section>
+      <div class="product-container">
+        <div class="img-container" v-for="image in productImages" :key="image">
+          <img :src="image" />
+        </div>
+      </div>
+      <div class="info-container">
+        <header>
+          <h1>{{ selectedProduct.name }}</h1>
+          <p>${{ selectedProduct.price }}</p>
+        </header>
+        <main>
+          <p>{{ selectedProduct.meta }}</p>
+          <p class="size">Select Size:</p>
+          <product-size @select-size="updateSize"></product-size>
+          <br />
+          <base-button cart> add to cart </base-button>
+          <p>Free 30 day return</p>
+        </main>
+      </div>
+    </section>
+    <reviews-list></reviews-list>
   </div>
 </template>
 
+
+
 <script>
+import ProductSize from "../../products/ProductSize.vue";
+import ReviewsList from "../../reviews/ReviewsList.vue";
+
 export default {
-  props: {
-    id: {
-      type: String,
-      required: true,
-    },
-  },
+  components: { ProductSize, ReviewsList },
+  props: ["id"],
   data() {
     return {
       selectedProduct: null,
+      productImages: null,
+      dialogIsOpen: false,
     };
+  },
+  methods: {
+    updateSize(size) {
+      this.selectedSize = size;
+    },
   },
   created() {
     this.selectedProduct = this.$store.getters["productsModule/products"].find(
       (product) => product.id === this.id
     );
+    this.productImages = this.selectedProduct.imageUrl;
   },
 };
 </script>
 
-
 <style scoped>
-h2 {
-  margin-bottom: 0
+:root {
+  --base-color: #212a2f;
 }
 
-p {
-  margin-top: 5px
-}
-
-.container {
+section {
   padding: 55px;
-  width: 768px;
-  margin: 0 auto;
+  display: flex;
+  color: var(--base-color, #212a2f);
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 0;
+}
+
+header p {
+  margin: 5px;
+  border-bottom: 2px solid var(--base-color, #212a2f);
+  padding-bottom: 15px;
+}
+
+.size {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+main p {
+  line-height: 1.5;
+}
+
+main p:last-child {
+  text-align: center;
+  font-size: 14px;
+}
+
+.product-container {
+  display: flex;
+  width: 70%;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.img-container {
+  width: 400px;
+  height: 400px;
+  padding: 10px;
+  cursor: pointer;
 }
 
 img {
   width: 100%;
-  height: 400px;
+  height: 100%;
 }
 
-@media(max-width: 767px) {
-  img {
-    height: 300px;
+@media (max-width: 1024px) {
+  .img-container {
+    width: 200px;
+    height: 200px;
   }
 
-  .container {
-    width: auto;
+  .product-container {
+    height: min-content;
+    width: 65%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  section {
+    display: block;
+    padding: 50px 20px;
+  }
+
+  .product-container {
+    width: 100%;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+  }
+
+  .img-container {
+    flex-shrink: 0;
+  }
+
+
+  .product-container::-webkit-scrollbar {
+    display: none;
   }
 }
 </style>
+

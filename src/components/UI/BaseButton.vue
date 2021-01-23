@@ -1,12 +1,16 @@
 <template>
   <div>
-    <router-link v-if="link" :to="url">
-      <button :class="{secondary: secondary}">
+    <button v-if="cart" class="cart">
+      <slot></slot>
+    </button>
+
+    <router-link v-else-if="link" :to="url">
+      <button :class="{ secondary: secondary }">
         <slot></slot>
       </button>
     </router-link>
 
-    <button v-else :class="{secondary: secondary}">
+    <button v-else :class="{ tertiary: tertiary }">
       <slot></slot>
     </button>
   </div>
@@ -27,7 +31,17 @@ export default {
     secondary: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
+    },
+    cart: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    tertiary: {
+      type: Boolean,
+      required: false,
+      default: false,
     }
   },
 };
@@ -56,11 +70,33 @@ a {
 }
 
 .secondary {
-  background-color: #7b858a;
-  color: white;
+  background-color: white;
+  color: #212a2f;
+  border: 1px solid #212a2f;
 }
 
-@media(max-width: 768px) {
+.cart {
+  width: 90%;
+  background-color: #212a2f;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
+  text-align: center;
+  transition: all 0.1s linear;
+}
+
+.cart:hover {
+  background-color: white;
+  border: 2px solid #212a2f;
+  color: #212a2f;
+}
+
+.tertiary {
+  background-color: #444d52;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
   button {
     padding: 15px 15px;
   }

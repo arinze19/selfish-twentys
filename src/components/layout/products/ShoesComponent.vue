@@ -60,7 +60,12 @@ li {
   border: none;
 }
 
+h3 {
+  margin-bottom: 0;
+}
+
 p {
+  margin-top: 5px;
   font-size: 14px;
 }
 

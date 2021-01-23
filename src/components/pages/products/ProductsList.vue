@@ -10,7 +10,7 @@
           v-for="product in productsList"
           :key="product.name"
           :name="product.name"
-          :imageUrl="product.imageUrl"
+          :imageUrl="product.imageUrl[0]"
           :description="product.description"
           :price="product.price"
           :id="product.id"

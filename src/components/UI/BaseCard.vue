@@ -29,6 +29,10 @@ export default {
 
 
 <style scoped>
+div {
+  margin: 0;
+  padding: 0;
+}
 .container {
   width: 350px;
   height: 450px;
@@ -77,6 +81,15 @@ img {
     width: 300px;
     height: 400px;
     margin: 10px auto;
+  }
+
+  .action {
+    padding: 10px;
+  }
+
+  .container-2 {
+    padding: 10px;
+    margin: 40px 20px;
   }
 }
 </style>

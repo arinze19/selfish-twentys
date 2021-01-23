@@ -6,6 +6,7 @@ import Auth           from './components/pages/auth/Auth.vue';
 import Cart           from './components/pages/orders/Cart.vue';
 import Search         from './components/pages/products/Search.vue';
 import ErrorPage      from './components/pages/error/ErrorPage.vue';
+import ReviewsForm    from './components/pages/reviews/Reviews.vue'
 
 
 const history = createWebHistory()
@@ -16,7 +17,8 @@ const routes  = [
     { path: '/auth', component: Auth },
     { path: '/cart', component: Cart },
     { path: '/search', component: Search },
-    { path: '/:notFound(.*)', component: ErrorPage }
+    { path: '/reviews', component: ReviewsForm },
+    { path: '/:notFound(.*)', component: ErrorPage },
 ]
 
 
