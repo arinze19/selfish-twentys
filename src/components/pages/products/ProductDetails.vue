@@ -26,7 +26,6 @@
 </template>
 
 
-
 <script>
 import ProductSize from "../../products/ProductSize.vue";
 import ReviewsList from "../../reviews/ReviewsList.vue";
@@ -125,13 +124,19 @@ img {
 }
 
 @media (max-width: 767px) {
+  .img-container {
+    width: 300px;
+    height: 300px;
+  }
+
   section {
     display: block;
-    padding: 50px 20px;
+    padding: 0;
   }
 
   .product-container {
     width: 100%;
+    padding-top: 60px;
     overflow-y: hidden;
     flex-wrap: nowrap;
     justify-content: flex-start;
@@ -143,6 +148,9 @@ img {
     flex-shrink: 0;
   }
 
+  .info-container {
+    padding: 20px;
+  }
 
   .product-container::-webkit-scrollbar {
     display: none;
