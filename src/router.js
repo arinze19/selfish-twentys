@@ -17,7 +17,7 @@ const routes  = [
     { path: '/auth', component: Auth },
     { path: '/cart', component: Cart },
     { path: '/search', component: Search },
-    { path: '/reviews', component: ReviewsForm },
+    { path: '/review', component: ReviewsForm },
     { path: '/:notFound(.*)', component: ErrorPage },
 ]
 

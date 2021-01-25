@@ -16,11 +16,14 @@
           <p class="size">Select Size:</p>
           <product-size @select-size="updateSize"></product-size>
           <br />
-          <base-button cart> add to cart </base-button>
+          <base-button cart @click="addToCart"> add to cart </base-button>
           <p>Free 30 day return</p>
         </main>
       </div>
     </section>
+    <base-alert :show="successAlert">
+      <strong>{{ selectedProduct.name }} has been added to your cart.</strong>
+    </base-alert>
     <reviews-list></reviews-list>
   </div>
 </template>
@@ -38,12 +41,31 @@ export default {
       selectedProduct: null,
       productImages: null,
       dialogIsOpen: false,
+      selectedSize: null,
+      successAlert: false
     };
   },
   methods: {
     updateSize(size) {
       this.selectedSize = size;
     },
+    addToCart() {
+      const cartItem = {
+        name: this.selectedProduct.name,
+        image: this.productImages[0],
+        price: this.selectedProduct.price,
+        size: this.selectedSize || 11
+      }
+      
+      this.$store.dispatch("ordersModule/addOrderToCart", cartItem);
+      this.showSuccessAlert();
+    },
+    showSuccessAlert() {
+      this.successAlert = true;
+      setTimeout(() => {
+        this.successAlert = false;
+      }, 3000);
+    }
   },
   created() {
     this.selectedProduct = this.$store.getters["productsModule/products"].find(

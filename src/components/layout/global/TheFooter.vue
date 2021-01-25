@@ -61,6 +61,7 @@ input {
   background-color: #7b858a;
   transition: all 0.3s ease-in-out;
   margin-bottom: 1em;
+  color: white;
 }
 
 input:focus {

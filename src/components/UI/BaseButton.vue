@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button v-if="cart" class="cart">
+    <button v-if="cart" class="cart" @click="disableCart">
       <slot></slot>
     </button>
 
@@ -43,7 +43,7 @@ export default {
       required: false,
       default: false,
     }
-  },
+  }
 };
 </script>
 
@@ -62,6 +62,7 @@ button {
   border: none;
   transition: all 0.3s ease-in-out;
   margin-right: 10px;
+  outline: none;
 }
 
 a {

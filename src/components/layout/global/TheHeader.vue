@@ -14,7 +14,7 @@
       </div>
       <nav>
         <div class="cart-icon">
-          <router-link to="/cart">Cart</router-link>
+          <router-link to="/cart">Cart ({{ cartItemsCount }})</router-link>
         </div>
         <ul>
           <li>
@@ -24,7 +24,7 @@
             <router-link to="/auth">Login </router-link>
           </li>
           <li>
-            <router-link to="/cart">Cart</router-link>
+            <router-link to="/cart">Cart ({{ cartItemsCount }})</router-link>
           </li>
         </ul>
       </nav>
@@ -50,9 +50,9 @@ export default {
     }
   },
   computed: {
-    getWindowWidth() {
-      return this.windowWidth <= 770;
-    },
+    cartItemsCount() {
+      return this.$store.getters["ordersModule/cartItemsCount"]
+    }
   },
 };
 </script>
