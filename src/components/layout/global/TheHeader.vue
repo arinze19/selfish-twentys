@@ -122,7 +122,7 @@ nav p {
   cursor: pointer;
 }
 
-.cart-icon a {
+.cart-icon p {
   display: none;
   color: #2e2e2e;
 }
@@ -132,7 +132,7 @@ nav a:hover {
 }
 
 @media (max-width: 770px) {
-  .cart-icon a {
+  .cart-icon p {
     font-size: 16px;
     padding: 0;
     margin: 0;
