@@ -13,8 +13,8 @@
         </router-link>
       </div>
       <nav>
-        <div class="cart-icon">
-          <router-link to="/cart">Cart ({{ cartItemsCount }})</router-link>
+        <div class="cart-icon" @click="openCart">
+          <p>Cart ({{ cartItemsCount }})</p>
         </div>
         <ul>
           <li>
@@ -23,8 +23,8 @@
           <li>
             <router-link to="/auth">Login </router-link>
           </li>
-          <li>
-            <router-link to="/cart">Cart ({{ cartItemsCount }})</router-link>
+          <li @click="openCart">
+            <p> Cart ({{ cartItemsCount }}) </p>  
           </li>
         </ul>
       </nav>
@@ -47,6 +47,9 @@ export default {
     },
     closeNav() {
       this.isActive = false
+    },
+    openCart() {
+      this.$emit('open-cart', true)
     }
   },
   computed: {
@@ -105,7 +108,8 @@ p {
   height: 25px;
 }
 
-nav a {
+nav a,
+nav p {
   text-decoration: none;
   color: #2e2e2e;
   margin: 8px;
@@ -115,6 +119,7 @@ nav a {
   text-transform: uppercase;
   font-size: 14px;
   transition: all 0.5s ease-in-out;
+  cursor: pointer;
 }
 
 .cart-icon a {

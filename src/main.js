@@ -12,6 +12,7 @@ import BaseAlert     from './components/UI/BaseAlert.vue'
 import BaseDialog    from './components/UI/BaseDialog.vue'
 import MenuList      from './components/layout/global/MenuList.vue'
 import ActionCall    from './components/layout/global/ActionCall.vue'
+import TheCart       from './components/layout/global/Cart.vue'
 
 
 
@@ -23,6 +24,7 @@ app.use(store)
 
 app.component('the-header', TheHeader)
 app.component('the-footer', TheFooter)
+app.component('the-cart', TheCart)
 app.component('menu-bar', MenuBar)
 app.component('base-button', BaseButton)
 app.component('base-alert', BaseAlert)

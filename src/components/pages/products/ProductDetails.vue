@@ -53,7 +53,8 @@ export default {
       const cartItem = {
         name: this.selectedProduct.name,
         image: this.productImages[0],
-        price: this.selectedProduct.price,
+        id: this.id,
+        price: Number(this.selectedProduct.price),
         size: this.selectedSize || 11
       }
       

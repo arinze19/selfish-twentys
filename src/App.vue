@@ -1,10 +1,26 @@
 <template>
   <div>
-    <the-header></the-header>
+    <the-header @open-cart="toggleCart"></the-header>
+    <the-cart :show="cartIsOpen" @close-cart="toggleCart"></the-cart>
     <router-view></router-view>
     <the-footer></the-footer>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      cartIsOpen: false
+    }
+  },
+  methods: {
+    toggleCart(cartStatus) {
+      this.cartIsOpen = cartStatus
+    }
+  }
+}
+</script>
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
