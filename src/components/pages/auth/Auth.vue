@@ -135,7 +135,7 @@ export default {
 
         const redirectUrl = '/' + (this.$route.query['redirect'] || '')
         if(redirectUrl.length > 5) {
-          this.$router.replace(redirectUrl + '/reviews')
+          this.$router.replace(redirectUrl + '/review')
         } else {
           this.$router.replace(redirectUrl)
         }
@@ -193,7 +193,7 @@ export default {
  
         const redirectUrl = '/' + (this.$route.query['redirect'] || '')
         if(redirectUrl.length > 5) {
-          this.$router.replace(redirectUrl + '/reviews')
+          this.$router.replace(redirectUrl + '/review')
         } else {
           this.$router.replace(redirectUrl)
         }
