@@ -26,7 +26,7 @@
             <router-link to="/help">Help</router-link>
           </li>
           <li>
-            <p @click="logOut" v-if="isLoggedIn">Log Out </p>
+            <p @click="logout" v-if="isLoggedIn">Log Out </p>
             <router-link to="/auth" v-else>Login </router-link>
           </li>
           <li @click="openCart">
@@ -56,6 +56,10 @@ export default {
     },
     openCart() {
       this.$emit('open-cart', true)
+    },
+    logout() {
+      this.$store.dispatch("logOut")
+      this.$router.replace('/')
     }
   },
   computed: {
@@ -63,7 +67,7 @@ export default {
       return this.$store.getters["ordersModule/cartItemsCount"]
     },
     isLoggedIn() {
-      return this.$store.getters["authModule/isLoggedIn"]
+      return this.$store.getters["isLoggedIn"]
     }
   },
 };

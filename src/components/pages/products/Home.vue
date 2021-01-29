@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <section class="hero"></section>
     <div class="container">
       <h2>Be Natural, Save The Planet</h2>
@@ -25,6 +25,10 @@ export default {
 
 
 <style scoped>
+.wrapper {
+  max-width: 1440px;
+}
+
 .hero {
   background: url("https://images.pexels.com/photos/4462781/pexels-photo-4462781.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
     no-repeat center center fixed;
@@ -67,9 +71,6 @@ p {
     margin: 3px 30px 20px 30px;
   }
 
-  .inline {
-    
-  }
   .hero {
     background-image: url("https://images.pexels.com/photos/3772771/pexels-photo-3772771.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
   }

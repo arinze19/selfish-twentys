@@ -130,9 +130,11 @@ export default {
 
       try {
 
-        await this.$store.dispatch("authModule/signIn", user);
+        await this.$store.dispatch("signIn", user);
         this.isLoading = false;
-        this.$router.replace("/");
+
+        const redirectUrl = '/' + (this.$route.query['redirect'] + '/review' || '')
+        this.$router.replace(redirectUrl)
       } 
       catch(error) {
 
@@ -181,9 +183,11 @@ export default {
       };
       try {
 
-        await this.$store.dispatch("authModule/signUp", newUser);
+        await this.$store.dispatch("signUp", newUser);
         this.isLoading = false;
-        this.$router.replace("/");
+
+        const redirectUrl = '/' + (this.$route.query['redirect'] + '/review' || '')
+        this.$router.replace(redirectUrl)
       } 
       catch(error) {
 
@@ -211,6 +215,7 @@ section {
   justify-content: space-around;
   padding: 55px;
   padding-top: 200px;
+  max-width: 1440px;
 }
 
 .login,

@@ -11,7 +11,7 @@
         <router-link to="/pages/our-material"> Our Material</router-link>
       </li>
       <li @click="closeNav">
-        <p @click="logOut" v-if="isLoggedIn">Log Out</p>
+        <p @click="logout" v-if="isLoggedIn">Log Out</p>
         <router-link to="/auth" v-else>Login </router-link>
       </li>
       <li @click="closeNav">
@@ -36,10 +36,14 @@ export default {
     closeNav() {
       this.$emit("close-nav", false);
     },
+    logout() {
+      this.$store.dispatch("logOut")
+      this.$router.replace('/')
+    }
   },
   computed: {
     isLoggedIn() {
-      return this.$store.getters["authModule/isLoggedIn"]
+      return this.$store.getters["isLoggedIn"]
     }
   }
 };

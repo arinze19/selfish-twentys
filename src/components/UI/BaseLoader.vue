@@ -33,12 +33,13 @@ h5 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 400px
 }
 
 .wrapper {
   background-color: #ffffffd0;
   position: fixed;
+  display: grid;
+  place-content: center;
   z-index: 99;
   width: 100vw;
   height: 100vh;
@@ -95,10 +96,5 @@ h5 {
     opacity: 1
 }
 
-@media(max-width: 767px) {
-  .container {
-    margin-top: 300px
-  }
-}
 
 </style>

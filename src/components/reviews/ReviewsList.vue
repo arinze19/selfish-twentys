@@ -1,5 +1,5 @@
 <template>
-  <div class="containe">
+  <div class="container">
     <h1>Feedback from our customers.</h1>
     <p>
       You can add a review to this product
@@ -45,13 +45,20 @@ export default {
         : false;
     },
     reviewLink() {
-      return "/" + this.id + "/review";
+      if (!this.isLoggedIn) {
+        return "/auth?redirect=" + this.id;
+      } else {
+        return "/" + this.id + "/review";
+      }
+    },
+    isLoggedIn() {
+      return this.$store.getters["isLoggedIn"];
     },
   },
 
   created() {
-    this.loadReviews(this.id)
-  }
+    this.loadReviews(this.id);
+  },
 };
 </script>
 
@@ -78,5 +85,11 @@ p {
 
 .container {
   padding: 55px;
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 0;
+  }
 }
 </style>

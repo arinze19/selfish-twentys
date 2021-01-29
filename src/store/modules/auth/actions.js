@@ -59,4 +59,9 @@ export default {
 
     commit("signIn", authCredentials);
   },
+
+  // ================================== logout function
+  logOut({ commit }) {
+    commit("logOut")
+  } 
 };
