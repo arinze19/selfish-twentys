@@ -95,4 +95,10 @@ h5 {
     opacity: 1
 }
 
+@media(max-width: 767px) {
+  .container {
+    margin-top: 300px
+  }
+}
+
 </style>

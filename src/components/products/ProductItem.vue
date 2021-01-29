@@ -7,7 +7,7 @@
         <p>${{ price }}</p>
       </div>
       <div class="container">
-        <base-button> Add to Cart </base-button>
+        <base-button @click="addToCart"> Add to Cart </base-button>
         <base-button link secondary :url="productLink">
           View Details</base-button
         >
@@ -40,7 +40,19 @@ export default {
       required: true,
     },
   },
+  methods: {
+    addToCart() {
+      const cartItem = {
+        name: this.name,
+        image: this.imageUrl,
+        id: this.id,
+        price: Number(this.price),
+        size:  11,
+      };
 
+      this.$store.dispatch("ordersModule/addItemToCart", cartItem);
+    },
+  },
   computed: {
     productLink() {
       return "/products/" + this.id;
@@ -51,7 +63,7 @@ export default {
 
 
 <style scoped>
- h3 {
+h3 {
   margin: 0;
   color: #212a2f;
 }

@@ -27,11 +27,6 @@ import ProductItem from "../../products/ProductItem.vue";
 
 export default {
   components: { ProductItem },
-  data() {
-    return {
-
-    };
-  },
   computed: {
     productsList() {
       return this.$store.getters['productsModule/products']
