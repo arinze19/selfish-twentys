@@ -133,8 +133,12 @@ export default {
         await this.$store.dispatch("signIn", user);
         this.isLoading = false;
 
-        const redirectUrl = '/' + (this.$route.query['redirect'] + '/review' || '')
-        this.$router.replace(redirectUrl)
+        const redirectUrl = '/' + (this.$route.query['redirect'] || '')
+        if(redirectUrl.length > 5) {
+          this.$router.replace(redirectUrl + '/reviews')
+        } else {
+          this.$router.replace(redirectUrl)
+        }
       } 
       catch(error) {
 
@@ -186,8 +190,13 @@ export default {
         await this.$store.dispatch("signUp", newUser);
         this.isLoading = false;
 
-        const redirectUrl = '/' + (this.$route.query['redirect'] + '/review' || '')
-        this.$router.replace(redirectUrl)
+ 
+        const redirectUrl = '/' + (this.$route.query['redirect'] || '')
+        if(redirectUrl.length > 5) {
+          this.$router.replace(redirectUrl + '/reviews')
+        } else {
+          this.$router.replace(redirectUrl)
+        }
       } 
       catch(error) {
 
