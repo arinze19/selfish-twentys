@@ -24,7 +24,7 @@
     <base-alert :show="successAlert">
       <strong>{{ selectedProduct.name }} has been added to your cart.</strong>
     </base-alert>
-    <reviews-list></reviews-list>
+    <reviews-list :id="id"></reviews-list>
   </div>
 </template>
 
@@ -58,7 +58,7 @@ export default {
         size: this.selectedSize || 11
       }
       
-      this.$store.dispatch("ordersModule/addOrderToCart", cartItem);
+      this.$store.dispatch("ordersModule/addItemToCart", cartItem);
       this.showSuccessAlert();
     },
     showSuccessAlert() {

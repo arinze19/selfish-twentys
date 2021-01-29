@@ -77,7 +77,7 @@ export default {
     };
   },
   methods: {
-    addReview() {
+    async addReview() {
       this.nameIsValid    = true;
       this.remarkIsValid  = true;
       this.commentIsValid = true;
@@ -100,8 +100,9 @@ export default {
         remark: this.remark,
         star: this.star,
         comment: this.comment,
+        id: this.$route.params.id
       };
-      this.$store.dispatch("reviewsModule/addReview", newReview);
+      await this.$store.dispatch("reviewsModule/addReview", newReview);
       this.showSuccessAlert();
 
       this.name = "";

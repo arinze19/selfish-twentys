@@ -19,7 +19,7 @@ export default {
   components: { CartItem },
   computed: {
     cartList() {
-      return this.$store.getters["ordersModule/cartList"];
+      return  this.$store.getters["ordersModule/cartList"];
     },
   },
 };

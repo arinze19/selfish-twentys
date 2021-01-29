@@ -4,7 +4,8 @@ import ProductsList   from './components/pages/products/ProductsList.vue';
 import ProductDetails from './components/pages/products/ProductDetails.vue';
 import Auth           from './components/pages/auth/Auth.vue';
 import ErrorPage      from './components/pages/error/ErrorPage.vue';
-import ReviewsForm    from './components/pages/reviews/Reviews.vue'
+import ReviewsForm    from './components/pages/reviews/Reviews.vue';
+import Help           from './components/pages/help/Help.vue'
 
 
 const history = createWebHistory()
@@ -13,14 +14,18 @@ const routes  = [
     { path: '/products', component: ProductsList },
     { path: '/products/:id', component: ProductDetails, props: true },
     { path: '/auth', component: Auth },
-    { path: '/review', component: ReviewsForm },
+    { path: '/:id/review', component: ReviewsForm, props: true },
+    { path: '/help', component: Help },
     { path: '/:notFound(.*)', component: ErrorPage },
 ]
 
 
 const router = createRouter({
     history,
-    routes
+    routes,
+    scrollBehavior() {
+        return { x: 0, y: 0 }
+    }
 })
 
 

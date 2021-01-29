@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="dialog"></div>
     <the-header @open-cart="toggleCart"></the-header>
     <the-cart :show="cartIsOpen" @close-cart="toggleCart"></the-cart>
     <router-view></router-view>
@@ -17,7 +18,13 @@ export default {
   methods: {
     toggleCart(cartStatus) {
       this.cartIsOpen = cartStatus
+    },
+    async loadProducts() {
+       await this.$store.dispatch("productsModule/loadProducts")
     }
+  },
+  created() {
+    this.loadProducts()
   }
 }
 </script>

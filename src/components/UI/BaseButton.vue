@@ -87,7 +87,7 @@ a {
 }
 
 .cart:hover {
-  background-color: white;
+  background-color: transparent;
   border: 2px solid #212a2f;
   color: #212a2f;
 }

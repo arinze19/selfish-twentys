@@ -7,21 +7,27 @@
         <p>Superior</p>
         <p>Wear.</p>
       </div>
+
+
       <div class="logo">
         <router-link to="/">
           <img src="../../../assets/logo.png" alt="Selfish Twentys" />
         </router-link>
       </div>
+
+
       <nav>
         <div class="cart-icon" @click="openCart">
           <p>Cart ({{ cartItemsCount }})</p>
         </div>
+
         <ul>
-          <li>
-            <router-link to="/search">Search</router-link>
+          <li class="help">
+            <router-link to="/help">Help</router-link>
           </li>
           <li>
-            <router-link to="/auth">Login </router-link>
+            <p @click="logOut" v-if="isLoggedIn">Log Out </p>
+            <router-link to="/auth" v-else>Login </router-link>
           </li>
           <li @click="openCart">
             <p> Cart ({{ cartItemsCount }}) </p>  
@@ -55,6 +61,9 @@ export default {
   computed: {
     cartItemsCount() {
       return this.$store.getters["ordersModule/cartItemsCount"]
+    },
+    isLoggedIn() {
+      return this.$store.getters["authModule/isLoggedIn"]
     }
   },
 };
@@ -127,7 +136,8 @@ nav p {
   color: #2e2e2e;
 }
 
-nav a:hover {
+nav a:hover,
+nav p:hover {
   background-color: #f3f3f3;
 }
 

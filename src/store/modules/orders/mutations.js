@@ -1,5 +1,5 @@
 export default {
-    addOrderToCart(state, payload) {
+    addItemToCart(state, payload) {
         state.cartItemsList.push(payload)
     },
     removeFromCart(state, payload) {

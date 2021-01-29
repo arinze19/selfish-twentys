@@ -6,9 +6,11 @@
     <p v-if="!freeShipping">
       You are ${{ freeShippingGuage }} away from free shipping!
     </p>
-    <p v-else>Congrats! You get Free Shipping</p>
+    <p v-else>
+      Congrats! You get Free Shipping <i class="las la-hand-peace"></i>
+    </p>
     <div class="progress-bar">
-      <div class="value" :style="{width: freeShippingMeter}"></div>
+      <div class="value" :style="{ width: freeShippingMeter }"></div>
     </div>
   </header>
 </template>
@@ -23,16 +25,16 @@ export default {
   },
   computed: {
     freeShipping() {
-      return (this.$store.getters["ordersModule/totalPrice"] > 230);
+      return this.$store.getters["ordersModule/totalPrice"] > 230;
     },
     freeShippingGuage() {
-      return (this.$store.getters["ordersModule/freeShipping"]);
+      return this.$store.getters["ordersModule/freeShipping"];
     },
     freeShippingMeter() {
-        const cartValue =  this.$store.getters["ordersModule/totalPrice"]
-        if(cartValue > 230) return;
-        return (cartValue/230 * 100) + '%'
-    }
+      const cartValue = this.$store.getters["ordersModule/totalPrice"];
+      if (cartValue > 230) return;
+      return (cartValue / 230) * 100 + "%";
+    },
   },
 };
 </script>

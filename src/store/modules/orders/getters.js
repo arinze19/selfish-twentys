@@ -1,6 +1,6 @@
 export default {
     cartItemsCount(state) {
-        return state.cartItemsList.length
+        return  state.cartItemsList.length
     },
     cartList(state) {
         return state.cartItemsList

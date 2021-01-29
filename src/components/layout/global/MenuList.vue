@@ -11,7 +11,8 @@
         <router-link to="/pages/our-material"> Our Material</router-link>
       </li>
       <li @click="closeNav">
-        <router-link to="/auth"> Login</router-link>
+        <p @click="logOut" v-if="isLoggedIn">Log Out</p>
+        <router-link to="/auth" v-else>Login </router-link>
       </li>
       <li @click="closeNav">
         <router-link to="/help"> Help</router-link>
@@ -33,7 +34,12 @@ export default {
   },
   methods: {
     closeNav() {
-      this.$emit('close-nav', false)
+      this.$emit("close-nav", false);
+    },
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters["authModule/isLoggedIn"]
     }
   }
 };
@@ -51,31 +57,33 @@ export default {
 }
 
 ul {
-    margin: 50px 0 0 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
+  margin: 50px 0 0 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
 
 li {
-    list-style-type: none;
-    border-bottom: 1px solid #212a2f;
-    font-size: 23px;
-    padding-bottom: 30px;
-    padding-left: 21px;
-    padding-top: 30px;
-    text-transform: uppercase;
-    font-weight: 700;
+  list-style-type: none;
+  border-bottom: 1px solid #212a2f;
+  font-size: 23px;
+  padding-bottom: 30px;
+  padding-left: 21px;
+  padding-top: 30px;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 li:nth-child(4),
 li:last-child {
-    font-weight: 400;
-    text-transform: none;
+  font-weight: 400;
+  text-transform: none;
 }
 
-a {
-    text-decoration: none;
-    color: #2e2e2e;
+a,
+p {
+  text-decoration: none;
+  color: #2e2e2e;
+  margin: 0;
 }
 </style>
