@@ -27,8 +27,8 @@ const routes = [
 const router = createRouter({
   history,
   routes,
-  scrollBehavior() {
-    return { x: 0, y: 0 };
+  scrollBehavior(_, _2, savedPosition) {
+    return savedPosition ? savedPosition : { left: 0, top: 0 }
   },
 });
 
