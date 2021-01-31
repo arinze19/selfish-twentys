@@ -84,6 +84,8 @@ export default {
 
 section {
   padding: 55px;
+  max-width: 1440px;
+  margin: 0 auto;
   display: flex;
   color: var(--base-color, #212a2f);
 }

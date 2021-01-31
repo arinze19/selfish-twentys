@@ -1,43 +1,47 @@
 <template>
   <div>
-    <h1>Products</h1>
-    <div class="input-container">
-      <input
-        type="text"
-        placeholder="Search through our catalog"
-        v-model="searchQuery"
-      />
-    </div>
+    <main>
+      <h1>Products</h1>
+      <div class="input-container">
+        <input
+          type="text"
+          placeholder="Search through our catalog"
+          v-model="searchQuery"
+        />
+      </div>
 
-    <section>
-      <ul class="container" v-if="!searchIsEmpty">
-        <product-item
-          v-for="product in filteredProducts"
-          :key="product.name"
-          :name="product.name"
-          :imageUrl="product.imageUrl[0]"
-          :description="product.description"
-          :price="product.price"
-          :id="product.id"
-        >
-        </product-item>
-      </ul>
+      <section>
+        <ul class="container" v-if="!searchIsEmpty">
+          <product-item
+            v-for="product in filteredProducts"
+            :key="product.name"
+            :name="product.name"
+            :imageUrl="product.imageUrl[0]"
+            :description="product.description"
+            :price="product.price"
+            :id="product.id"
+          >
+          </product-item>
+        </ul>
 
-      <ul class="container" v-else>
-        <product-item
-          v-for="product in productsList"
-          :key="product.name"
-          :name="product.name"
-          :imageUrl="product.imageUrl[0]"
-          :description="product.description"
-          :price="product.price"
-          :id="product.id"
-        >
-        </product-item>
-      </ul>
+        <ul class="container" v-else>
+          <product-item
+            v-for="product in productsList"
+            :key="product.name"
+            :name="product.name"
+            :imageUrl="product.imageUrl[0]"
+            :description="product.description"
+            :price="product.price"
+            :id="product.id"
+          >
+          </product-item>
+        </ul>
 
-      <h2 v-if="!searchIsEmpty && noResults">Your search for "{{ searchQuery }}" yielded no result</h2>
-    </section>
+        <h2 v-if="!searchIsEmpty && noResults">
+          Your search for "{{ searchQuery }}" yielded no result
+        </h2>
+      </section>
+    </main>
   </div>
 </template>
 
@@ -60,15 +64,14 @@ export default {
       return this.searchQuery.length === 0 ? true : false;
     },
     filteredProducts() {
-      return this.$store.getters["productsModule/products"].filter(item => {
-
-        const lowerCaseItem = item.name.toLowerCase()
-        return lowerCaseItem.includes(this.searchQuery.toLowerCase())
-      })
+      return this.$store.getters["productsModule/products"].filter((item) => {
+        const lowerCaseItem = item.name.toLowerCase();
+        return lowerCaseItem.includes(this.searchQuery.toLowerCase());
+      });
     },
     noResults() {
-      return this.filteredProducts.length === 0 ? true : false
-    }
+      return this.filteredProducts.length === 0 ? true : false;
+    },
   },
 };
 </script>
@@ -76,6 +79,11 @@ export default {
 <style scoped>
 div {
   padding: 55px;
+}
+
+main {
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 h2,
@@ -101,6 +109,7 @@ input:focus {
 .input-container {
   width: 90%;
   margin: 10px auto;
+  position: relative;
 }
 
 .container {

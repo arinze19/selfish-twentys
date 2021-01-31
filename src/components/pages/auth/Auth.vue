@@ -1,86 +1,88 @@
 <template>
   <section>
-    <teleport to=".dialog">
-      <base-loader :show="isLoading"></base-loader>
-    </teleport>
+    <main>
+      <teleport to=".dialog">
+        <base-loader :show="isLoading"></base-loader>
+      </teleport>
 
-    <div class="login">
-      <h2>Login</h2>
-      <form @submit.prevent="login">
-        <div class="form-control">
-          <label for="email">Email</label>
-          <br />
-          <input
-            type="text"
-            id="email"
-            v-model.trim="loginEmail"
-            :class="{ invalid: !loginEmailIsValid }"
-          />
-          <p v-if="!loginEmailIsValid">Enter a valid email</p>
-        </div>
-        <div class="form-control">
-          <label for="password">Password</label>
-          <br />
-          <input
-            type="password"
-            id="password"
-            v-model.trim="loginPassword"
-            :class="{ invalid: !loginPasswordIsValid }"
-          />
-          <p v-if="!loginPasswordIsValid">
-            Enter a password with at least 5 chracters
-          </p>
-        </div>
-        <base-button cart> Sign In</base-button>
-      </form>
-      <p class="forgot-password">Forgot Password?</p>
-    </div>
+      <div class="login">
+        <h2>Login</h2>
+        <form @submit.prevent="login">
+          <div class="form-control">
+            <label for="email">Email</label>
+            <br />
+            <input
+              type="text"
+              id="email"
+              v-model.trim="loginEmail"
+              :class="{ invalid: !loginEmailIsValid }"
+            />
+            <p v-if="!loginEmailIsValid">Enter a valid email</p>
+          </div>
+          <div class="form-control">
+            <label for="password">Password</label>
+            <br />
+            <input
+              type="password"
+              id="password"
+              v-model.trim="loginPassword"
+              :class="{ invalid: !loginPasswordIsValid }"
+            />
+            <p v-if="!loginPasswordIsValid">
+              Enter a password with at least 5 chracters
+            </p>
+          </div>
+          <base-button cart> Sign In</base-button>
+        </form>
+        <p class="forgot-password">Forgot Password?</p>
+      </div>
 
-    <div class="sign-up">
-      <h2>Create an account</h2>
-      <p>We <strong>NEVER</strong> save credit card info</p>
-      <p>
-        Registering with us makes checkout easier and faster and enables us
-        recommend better products based on your taste
-      </p>
-      <form @submit.prevent="signUp">
-        <div class="form-control">
-          <label for="name">Name</label>
-          <br />
-          <input
-            type="text"
-            id="name"
-            v-model.trim="signUpName"
-            :class="{ invalid: !signUpNameIsValid }"
-          />
-          <p v-if="!signUpNameIsValid">Please provide a valid name</p>
-        </div>
-        <div class="form-control">
-          <label for="signup-email">Email</label>
-          <br />
-          <input
-            type="text"
-            id="signup-email"
-            v-model.trim="signUpEmail"
-            :class="{ invalid: !signUpEmailIsValid }"
-          />
-          <p v-if="!signUpEmailIsValid">Please provide a valid email</p>
-        </div>
-        <div class="form-control">
-          <label for="signup-password">Password</label>
-          <br />
-          <input
-            type="password"
-            id="signup-password"
-            v-model.trim="signUpPassword"
-            :class="{ invalid: !signUpPasswordIsValid }"
-          />
-          <p v-if="!signUpPasswordIsValid">Please provide a valid password</p>
-        </div>
-        <base-button cart> Register </base-button>
-      </form>
-    </div>
-    <base-alert :show="showAlert"> {{ alertMessage }}</base-alert>
+      <div class="sign-up">
+        <h2>Create an account</h2>
+        <p>We <strong>NEVER</strong> save credit card info</p>
+        <p>
+          Registering with us makes checkout easier and faster and enables us
+          recommend better products based on your taste
+        </p>
+        <form @submit.prevent="signUp">
+          <div class="form-control">
+            <label for="name">Name</label>
+            <br />
+            <input
+              type="text"
+              id="name"
+              v-model.trim="signUpName"
+              :class="{ invalid: !signUpNameIsValid }"
+            />
+            <p v-if="!signUpNameIsValid">Please provide a valid name</p>
+          </div>
+          <div class="form-control">
+            <label for="signup-email">Email</label>
+            <br />
+            <input
+              type="text"
+              id="signup-email"
+              v-model.trim="signUpEmail"
+              :class="{ invalid: !signUpEmailIsValid }"
+            />
+            <p v-if="!signUpEmailIsValid">Please provide a valid email</p>
+          </div>
+          <div class="form-control">
+            <label for="signup-password">Password</label>
+            <br />
+            <input
+              type="password"
+              id="signup-password"
+              v-model.trim="signUpPassword"
+              :class="{ invalid: !signUpPasswordIsValid }"
+            />
+            <p v-if="!signUpPasswordIsValid">Please provide a valid password</p>
+          </div>
+          <base-button cart> Register </base-button>
+        </form>
+      </div>
+      <base-alert :show="showAlert"> {{ alertMessage }}</base-alert>
+    </main>
   </section>
 </template>
 
@@ -102,7 +104,7 @@ export default {
       signUpEmailIsValid: true,
       isLoading: false,
       showAlert: false,
-      alertMessage: null
+      alertMessage: null,
     };
   },
   methods: {
@@ -129,41 +131,34 @@ export default {
       };
 
       try {
-
         await this.$store.dispatch("signIn", user);
         this.isLoading = false;
 
-        const redirectUrl = '/' + (this.$route.query['redirect'] || '')
-        if(redirectUrl.length > 5) {
-          this.$router.replace(redirectUrl + '/review')
+        const redirectUrl = "/" + (this.$route.query["redirect"] || "");
+        if (redirectUrl.length > 5) {
+          this.$router.replace(redirectUrl + "/review");
         } else {
-          this.$router.replace(redirectUrl)
+          this.$router.replace(redirectUrl);
         }
-      } 
-      catch(error) {
-
-        this.showAlert    = true;
+      } catch (error) {
+        this.showAlert = true;
         this.alertMessage = error;
-        this.isLoading = false; 
+        this.isLoading = false;
 
         setTimeout(() => {
-          this.showAlert = false
-        }, 5000)
+          this.showAlert = false;
+        }, 5000);
       }
     },
 
-    
-
     async signUp() {
-      this.signUpNameisValid = true;
+      this.signUpNameisValid     = true;
       this.signUpPasswordIsValid = true;
-      this.signUpEmailIsValid = true;
+      this.signUpEmailIsValid    = true;
 
-      const signUpName = this.signUpName === "" || this.signUpName < 5;
-      const signUpEmail =
-        this.signUpEmail === "" || !this.signUpEmail.includes("@");
-      const signUpPassword =
-        this.signUpPassword === "" || this.signUpPassword < 5;
+      const signUpName     = this.signUpName === "" || this.signUpName < 5;
+      const signUpEmail    = this.signUpEmail === "" || !this.signUpEmail.includes("@");
+      const signUpPassword = this.signUpPassword === "" || this.signUpPassword < 5;
 
       if (signUpEmail) {
         this.signUpEmail = false;
@@ -186,27 +181,23 @@ export default {
         password: this.signUpPassword,
       };
       try {
-
         await this.$store.dispatch("signUp", newUser);
         this.isLoading = false;
 
- 
-        const redirectUrl = '/' + (this.$route.query['redirect'] || '')
-        if(redirectUrl.length > 5) {
-          this.$router.replace(redirectUrl + '/review')
+        const redirectUrl = "/" + (this.$route.query["redirect"] || "");
+        if (redirectUrl.length > 5) {
+          this.$router.replace(redirectUrl + "/review");
         } else {
-          this.$router.replace(redirectUrl)
+          this.$router.replace(redirectUrl);
         }
-      } 
-      catch(error) {
-
-        this.showAlert    = true;
+      } catch (error) {
+        this.showAlert = true;
         this.alertMessage = error;
-        this.isLoading = false; 
+        this.isLoading = false;
 
         setTimeout(() => {
-          this.showAlert = false
-        }, 5000)
+          this.showAlert = false;
+        }, 5000);
       }
     },
   },
@@ -219,11 +210,16 @@ export default {
 <style scoped>
 section {
   background-color: #cedfe4;
+  padding: 55px;
+  padding-top: 200px;
+}
+
+main {
+  max-width: 1440px;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 55px;
-  padding-top: 200px;
 }
 
 .login,

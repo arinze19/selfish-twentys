@@ -1,47 +1,49 @@
 <template>
   <section>
-    <div class="form">
-      <p>be the first to know when we have cool stuff</p>
-      <form>
-        <input type="text" />
-      </form>
-      <base-button tertiary> Sign Up</base-button>
-    </div>
-    <div class="footer-grid">
-      <div class="footer-links">
-        <h4>Help</h4>
-        <ul>
-          <li>1-234-5678-9000</li>
-          <li>1-234-5678-9001(Text)</li>
-          <li>FAQ/Contact Us</li>
-          <li>Returns/Exchanges</li>
-          <li>help@selfishtwentys.app</li>
-        </ul>
+    <main>
+      <div class="form">
+        <p>be the first to know when we have cool stuff</p>
+        <form>
+          <input type="text" />
+        </form>
+        <base-button tertiary> Sign Up</base-button>
       </div>
-      <div class="footer-links">
-        <h4>Company</h4>
-        <ul>
-          <li>Affiliate Programs</li>
-          <li>Our Story</li>
-          <li>Our Mission</li>
-          <li>Our Materials</li>
-          <li>Wholesale</li>
-          <li>Press</li>
-          <li>Legal</li>
-          <li>Careers</li>
-        </ul>
+      <div class="footer-grid">
+        <div class="footer-links">
+          <h4>Help</h4>
+          <ul>
+            <li>1-234-5678-9000</li>
+            <li>1-234-5678-9001(Text)</li>
+            <li>FAQ/Contact Us</li>
+            <li>Returns/Exchanges</li>
+            <li>help@selfishtwentys.app</li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li>Affiliate Programs</li>
+            <li>Our Story</li>
+            <li>Our Mission</li>
+            <li>Our Materials</li>
+            <li>Wholesale</li>
+            <li>Press</li>
+            <li>Legal</li>
+            <li>Careers</li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Shop</h4>
+          <ul>
+            <li>Mens Apparel</li>
+            <li>Womens Apparel</li>
+            <li>GiftCards/Discounts</li>
+            <li>Socks</li>
+            <li>store locations</li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-links">
-        <h4>Shop</h4>
-        <ul>
-          <li>Mens Apparel</li>
-          <li>Womens Apparel</li>
-          <li>GiftCards/Discounts</li>
-          <li>Socks</li>
-          <li>store locations</li>
-        </ul>
-      </div>
-    </div>
+    </main>
   </section>
 </template>
 
@@ -51,6 +53,11 @@ section {
   width: 100%;
   background-color: #212a2f;
   color: white;
+}
+
+main {
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 input {
@@ -105,22 +112,22 @@ li {
 }
 
 @media (max-width: 767px) {
-.footer-grid {
-  display: block;
-  margin: 0 auto;
-  text-align: center;
-}
+  .footer-grid {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
 
-.footer-links {
-  padding: 10px;
-}
+  .footer-links {
+    padding: 10px;
+  }
 
-.form {
-  padding: 30px 30px 0;
-}
+  .form {
+    padding: 30px 30px 0;
+  }
 
-input {
-  width: 280px;
-}
+  input {
+    width: 280px;
+  }
 }
 </style>

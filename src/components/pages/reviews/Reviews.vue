@@ -120,6 +120,11 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
 form {
   padding: 15px;
   max-width: 70rem;

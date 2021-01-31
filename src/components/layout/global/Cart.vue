@@ -5,7 +5,6 @@
 
       <div class="container">
         <div class="main-container">
-          
           <cart-header @close-cart="$emit('close-cart', false)"></cart-header>
           <div v-if="cartIsEmpty" class="cart-empty">
             <p>
@@ -27,9 +26,9 @@
 </template>
 
 <script>
-import CartList     from "../../orders/CartList.vue";
+import CartList from "../../orders/CartList.vue";
 import ShippingInfo from "../../orders/ShippingInfo.vue";
-import CartHeader   from '../../orders/CartHeader.vue'
+import CartHeader from "../../orders/CartHeader.vue";
 
 export default {
   components: { CartList, ShippingInfo, CartHeader },
@@ -92,6 +91,8 @@ section {
 .cart-empty {
   margin: 30px auto;
   width: 70%;
+  display: grid;
+  place-content: center;
 }
 
 /* ========================= transition classes =========================*/
@@ -115,7 +116,7 @@ section {
   transform: translateX(-30px);
 }
 
-@media(max-width: 767px) {
+@media (max-width: 767px) {
   .container {
     width: 100%;
     margin-right: 0;
