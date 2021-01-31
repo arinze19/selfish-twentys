@@ -86,7 +86,6 @@ section {
   padding: 55px;
   display: flex;
   color: var(--base-color, #212a2f);
-  max-width: 1440px;
 }
 
 h1 {

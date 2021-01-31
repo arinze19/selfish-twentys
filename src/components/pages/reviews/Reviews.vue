@@ -159,7 +159,6 @@ textarea {
 section {
   padding: 55px;
   position: relative;
-  max-width: 1440px;
 }
 
 p,

@@ -224,7 +224,6 @@ section {
   justify-content: space-around;
   padding: 55px;
   padding-top: 200px;
-  max-width: 1440px;
 }
 
 .login,

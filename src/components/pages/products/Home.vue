@@ -25,9 +25,6 @@ export default {
 
 
 <style scoped>
-.wrapper {
-  max-width: 1440px;
-}
 
 .hero {
   background: url("https://images.pexels.com/photos/4462781/pexels-photo-4462781.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")

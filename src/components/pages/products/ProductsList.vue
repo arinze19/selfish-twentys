@@ -76,7 +76,6 @@ export default {
 <style scoped>
 div {
   padding: 55px;
-  max-width: 1440px;
 }
 
 h2,
