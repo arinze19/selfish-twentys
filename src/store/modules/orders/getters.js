@@ -6,7 +6,7 @@ export default {
         return state.cartItemsList
     },
     totalPrice(state) {
-        const cartPrices = state.cartItemsList.map(item => item.price)
+        const cartPrices = state.cartItemsList.map(item => (item.price * item.qty))
         const total      = cartPrices.reduce((a, b) => {
             return a + b
         }, 0).toFixed(2)

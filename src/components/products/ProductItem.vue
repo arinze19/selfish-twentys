@@ -48,6 +48,8 @@ export default {
         id: this.id,
         price: Number(this.price),
         size:  11,
+        decrement: false,
+        qty: 1
       };
 
       this.$store.dispatch("ordersModule/addItemToCart", cartItem);

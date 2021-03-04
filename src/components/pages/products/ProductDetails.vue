@@ -55,7 +55,9 @@ export default {
         image: this.productImages[0],
         id: this.id,
         price: Number(this.selectedProduct.price),
-        size: this.selectedSize || 11
+        size: this.selectedSize || 11,
+        decrement: false,
+        qty: 1
       }
       
       this.$store.dispatch("ordersModule/addItemToCart", cartItem);

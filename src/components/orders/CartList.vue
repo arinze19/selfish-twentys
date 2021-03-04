@@ -8,6 +8,7 @@
         :price="item.price"
         :name="item.name"
         :size="item.size"
+        :qty="item.qty"
       ></cart-item>
     </ul>
 </template>

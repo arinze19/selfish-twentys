@@ -4,24 +4,36 @@
       <img :src="image" />
     </div>
     <div class="product-info">
-      <h5>{{ name }}</h5>
-      <p>Size: {{ size }} </p>
+      <div>
+        <h5>{{ name }}</h5>
+        <p>Size: {{ size }}</p>
+      </div>
+      <br />
+      <div>
+        <cart-increment :qty="qty" :id="id"></cart-increment>
+      </div>
     </div>
     <div class="price">
-      <i class="las la-times" @click="removeItem"></i>
-      <p>${{ price }}</p>
+      <div>
+        <i class="las la-times" @click="removeItem"></i>
+      </div>
+      <div>
+        <p>${{ price }}</p>
+      </div>
     </div>
   </li>
 </template>
 
 <script>
+import CartIncrement from "./CartIncrement.vue";
 export default {
-  props: ["id", "image", "name", "price", "size"],
+  components: { CartIncrement },
+  props: ["id", "image", "name", "price", "size", "qty"],
   methods: {
     removeItem() {
-      this.$store.dispatch("ordersModule/removeItemFromCart", this.id)
-    }
-  }
+      this.$store.dispatch("ordersModule/removeItemFromCart", this.id);
+    },
+  },
 };
 </script>
 
@@ -60,16 +72,20 @@ img {
 .product-info {
   width: 60%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .product-info h5 {
-    margin: 0;
-    font-size: 16px;
+  margin: 0;
+  font-size: 16px;
 }
 
 .product-info p {
-    margin: 2px;
-    font-size: 14px;
+  margin: 2px;
+  font-size: 14px;
 }
+
 </style>
 

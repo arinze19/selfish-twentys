@@ -110,15 +110,18 @@ export default {
   methods: {
     async login() {
       this.loginPassowrdIsValid = true;
-      this.loginEmailIsValid = true;
+      this.loginEmailIsValid    = true;
 
-      const loginEmail =
-        this.loginEmail === "" || !this.loginEmail.includes("@");
+      const loginEmail    = this.loginEmail === "" || !this.loginEmail.includes("@");
       const loginPassword = this.loginPassword === "" || this.loginPassword < 5;
+
+      //authenticate if login details(email) credentials are not valid 
       if (loginEmail) {
         this.loginEmailIsValid = false;
         return;
       }
+
+      //authenticate if login details(password) credentials are not valid 
       if (loginPassword) {
         this.loginPasswordIsValid = false;
         return;
