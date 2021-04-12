@@ -38,6 +38,10 @@ export default {
   font-family: "Questrial", "Helvetica", "sans-serif";
 }
 
+img {
+  object-fit: cover;
+}
+
 h2,
 h3,
 h1,
